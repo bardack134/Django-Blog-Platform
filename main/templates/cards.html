@@ -1,0 +1,52 @@
+<!-- Extiende la plantilla "base.html" -->
+{% extends "base.html" %}
+
+<!-- Cargamos las etiquetas estáticas para acceder a archivos estáticos como CSS y JavaScript -->
+{% load static %}
+
+{% comment %} inicia contenido {% endcomment %}
+{% block content %}
+
+    
+
+    <!-- publicaciones -->
+    <!-- Aquí, justify-content-center se utiliza para centrar horizontalmente las columnas dentro de la fila. -->
+    <div class="row d-flex  px-5 mx-5 d-flex justify-content-center">
+        <!-- fila 1 -->
+        <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
+        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %} termina contenido {% endcomment %}
+{% endblock %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -118,7 +119,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Define la URL base para acceder a los archivos estáticos
 STATIC_URL = '/static/'
+# Define el directorio donde se copiarán los archivos estáticos al ejecutar el comando collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Define los directorios adicionales donde buscar archivos estáticos
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  
+]
+# Define la clase que se encarga de almacenar y servir los archivos estáticos. Whitenoise es una librería que permite servir los archivos estáticos de forma eficiente y segura.
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -13,9 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# Importa las funciones y configuraciones necesarias de Django para administrar la aplicación.
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+# Importa el módulo utilizado para trabajar con archivos estáticos y el directorio especificado en STATICFILES_DIRS.
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+# Importa la configuración global del proyecto Django desde settings.py.
+from django.conf import settings
+
+# Lista de patrones de URL para el enrutamiento de la aplicación.
 urlpatterns = [
+    # Ruta para acceder al panel de administración de Django.
     path('admin/', admin.site.urls),
+    
+    # Ruta principal que incluye las URL definidas en el archivo main.urls.
+    path('', include('main.urls'))
 ]
+
+# Agrega las URL para el manejo de archivos estáticos.
+urlpatterns += staticfiles_urlpatterns()
