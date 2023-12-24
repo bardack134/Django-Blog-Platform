@@ -6,5 +6,30 @@
 
 <!-- Inicia contenido -->
 {% block content %}
+    <!-- Inicio de la sección -->
+    {% comment %} nuestra @plantilla recibe la informacion enviada en el contexto por nuestra viista def blog(re..), y usando nomenclatura de clases accedemos a los datos de ese item en especifico {% endcomment %}
+    <section>
+        <!-- La clase 'container' establece un ancho máximo en todos los dispositivos y permite un relleno automático. Las clases 'd-flex', 'justify-content-center' y 'align-items-center' se utilizan para centrar el contenido horizontal .  'mt-1' añade un margen superior de 0.25rem (1 rem es igual al tamaño de fuente actual). -->
+        <div class="container d-flex justify-content-center  ">
+            <!-- La clase 'text-center' centra el texto y 'text-white' cambia el color del texto a blanco. 'mt-5' añade un margen superior de 3rem. -->
+            <div class="text-center text-white mt-5 pt-5">
+                <!-- Título del blog. La clase 'mt-5' añade un margen superior de 3rem y 'tipoLetra' es una clase personalizada que define la fuente. 'style="font-size: 4em;"' aumenta el tamaño de la fuente a 4 veces el tamaño de fuente actual. -->
+                <h1 class="mt-5 tipoLetra" style="font-size: 4em;">{{ dato_post.titulo }} </h1>
+            </div>
+        </div>
+        <!-- Fin de la sección -->
+    </section>
+    
+    <section class="container my-3" >
+    <div class="d-flex " >
+        
+        <div class=" px-4 " style="clear: both;">
+            <img src="{{ dato_post.imagen.url }}" class="img-fluid float-start pe-5 mt-4" alt="Imagen del Blog">
+        
+            <p class="mt-3 mb-3 ml-3 mr-3 lh-lg text-white fs-5 fst-italic" style="text-align:justify">{{ dato_post.texto }}</p>
+        </div>
+      </div>
+    
+    </section>
 
 {% endblock %}

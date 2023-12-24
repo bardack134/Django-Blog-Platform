@@ -12,7 +12,10 @@ class post(models.Model):
     
     # Este campo se utilizará para almacenar textos más largos, sin una longitud máxima predefinida.
     description = models.TextField(blank=True, null=True)
+
+    texto= models.TextField(blank=True, null=True)
     
+    imagen= models.ImageField(upload_to="blog", blank=True, null=True)
     # Este campo se utilizará para almacenar fechas y horas. 'auto_now_add=True' establece la fecha automáticamente al agregar un nuevo registro.
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
@@ -24,6 +27,6 @@ class post(models.Model):
         ordering = ['-created'] 
         
     def __str__(self):
-        return self.title
+        return self.titulo
     
     

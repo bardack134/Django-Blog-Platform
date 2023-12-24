@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# Importa el módulo utilizado para trabajar con archivos estáticos y el directorio especificado en STATICFILES_DIRS.
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+# Importa la función 'static' para manejar archivos estáticos y multimedia
+from django.conf.urls.static import static
 
 # Importa la configuración global del proyecto Django desde settings.py.
 from django.conf import settings
@@ -32,5 +33,8 @@ urlpatterns = [
     path('', include('main.urls'))
 ]
 
-# Agrega las URL para el manejo de archivos estáticos.
-urlpatterns += staticfiles_urlpatterns()
+
+# Configuración para servir archivos estáticos y multimedia durante el desarrollo
+if settings.DEBUG:
+    # Agrega las URL para servir archivos multimedia (MEDIA_URL) usando la ruta del sistema de archivos especificada en MEDIA_ROOT
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

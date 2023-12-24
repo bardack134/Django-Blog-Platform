@@ -7,46 +7,30 @@
 {% comment %} inicia contenido {% endcomment %}
 {% block content %}
 
-    
-    {% for i in datos %}
+{% comment %} inclusion de l encabezado (header)  desde la carpeta /templates/includes {% endcomment %}
+{% include 'includes/titulo.html' %}
+
+
+{% comment %} Este es un bucle for que itera sobre 'datos'   {% endcomment %}
+{% for i in datos %}
     <!-- publicaciones -->
     <!-- Aquí, justify-content-center se utiliza para centrar horizontalmente las columnas dentro de la fila. -->
     <div class="row d-flex  px-5 mx-5 d-flex justify-content-center">
         <!-- fila 1 -->
         <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
         <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card text-center" style="width: 18rem;">
+                <img src="{{ i.imagen.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{i.titulo}}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{ i.titulo }}</h5>
+                    <p class="card-text">{{ i.description }}</p>
+                    {% comment %} EETIQUETA DE ANCLAJE QUE CREARÁ UN ENLACE A 'MAIN:BLOG' ENVIANDO COMO PARAMETRO 'I.ID' , MAIN ES EL NOMBRE DE APP_NAME EN EL ARCHIVO URLS, Y BLOG EL NOMBRE DE LA URL, EL ID LO OBTENEMOS DEL CICLO FOR   {% endcomment %}
+                    <a href="{% url 'Main:Blog' i.id %}" class="btn btn-primary">View Blog Details</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+        
+        
     </div>
     
     {% endfor %}
