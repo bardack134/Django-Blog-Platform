@@ -7,8 +7,8 @@ class post(models.Model):
     #La línea unique=True se aplica al campo title. Esto significa que cada valor en el campo title debe ser único en toda la tabla de la base de datos. No puede haber dos filas con el mismo valor en el campo title.
     titulo = models.CharField(max_length=200, blank=True, null=True, unique=True) 
     
-    #Auto-generación: El campo slug se utiliza para almacenar una versión "amigable" del título que puede ser utilizada en la URL. Este campo se auto-genera a partir del título, y su propósito es crear una URL legible y SEO-friendly.
-    slug = models.SlugField(max_length=200, unique=True)
+    # #Auto-generación: El campo slug se utiliza para almacenar una versión "amigable" del título que puede ser utilizada en la URL. Este campo se auto-genera a partir del título, y su propósito es crear una URL legible y SEO-friendly.
+    # slug = models.SlugField(max_length=200, unique=True)
     
     # Este campo se utilizará para almacenar textos más largos, sin una longitud máxima predefinida.
     description = models.TextField(blank=True, null=True)

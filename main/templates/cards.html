@@ -7,32 +7,51 @@
 {% comment %} inicia contenido {% endcomment %}
 {% block content %}
 
-{% comment %} inclusion de l encabezado (header)  desde la carpeta /templates/includes {% endcomment %}
-{% include 'includes/titulo.html' %}
+    {% comment %} inclusion de l encabezado (header)  desde la carpeta /templates/includes {% endcomment %}
+    {% include 'includes/titulo.html' %}
 
 
-{% comment %} Este es un bucle for que itera sobre 'datos'   {% endcomment %}
-{% for i in datos %}
-    <!-- publicaciones -->
-    <!-- Aquí, justify-content-center se utiliza para centrar horizontalmente las columnas dentro de la fila. -->
-    <div class="row d-flex  px-5 mx-5 d-flex justify-content-center">
-        <!-- fila 1 -->
-        <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
-        <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
-            <div class="card text-center" style="width: 18rem;">
-                <img src="{{ i.imagen.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ i.titulo }}</h5>
-                    <p class="card-text">{{ i.description }}</p>
-                    {% comment %} EETIQUETA DE ANCLAJE QUE CREARÁ UN ENLACE A 'MAIN:BLOG' ENVIANDO COMO PARAMETRO 'I.ID' , MAIN ES EL NOMBRE DE APP_NAME EN EL ARCHIVO URLS, Y BLOG EL NOMBRE DE LA URL, EL ID LO OBTENEMOS DEL CICLO FOR   {% endcomment %}
-                    <a href="{% url 'Main:Blog' i.id %}" class="btn btn-primary">View Blog Details</a>
+    {% comment %} Este es un bucle for que itera sobre 'datos'   {% endcomment %}
+    {% for i in datos %} 
+    <!-- forloop.counter0 es el índice actual del ciclo (comenzando desde 0), Esto puede ser útil, por ejemplo, si estás generando una cuadrícula de elementos y quieres que cada fila tenga exactamente 3 elementos. -->
+        {% if forloop.counter0|divisibleby:3 %}
+        <!-- divisibleby es un filtro de plantilla que devuelve True si el valor es divisible por el argumento. Por lo tanto, {% if forloop.counter0|divisibleby:3 %} verifica si el índice actual es divisible por 3, y si es así, agrega un nuevo contenedor. -->
+
+
+        <!-- publicaciones -->
+        <!-- Aquí, justify-content-center se utiliza para centrar horizontalmente las columnas dentro de la fila. -->
+            <div class="row d-flex  px-5 mx-5 d-flex justify-content-center">
+            {% endif %}
+            {% endif %}
+                <!-- fila 1 -->
+                <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
+                <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
+                    <div class="card text-center" style="width: 18rem;">
+                        <img src="{{ i.imagen.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.titulo }}</h5>
+                            <p class="card-text">{{ i.description }}</p>
+                            {% comment %} EETIQUETA DE ANCLAJE QUE CREARÁ UN ENLACE A 'MAIN:BLOG' ENVIANDO COMO PARAMETRO 'I.ID' , MAIN ES EL NOMBRE DE APP_NAME EN EL ARCHIVO URLS, Y BLOG EL NOMBRE DE LA URL, EL ID LO OBTENEMOS DEL CICLO FOR   {% endcomment %}
+                            <a href="{% url 'Main:Blog' i.id %}" class="btn btn-primary">View Blog Details</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        
-    </div>
-    
+            
+            {% comment %} lo que hace este código es cerrar un bloque <div> cada vez que forloop.counter es divisible por 3, o si es la última iteración del bucle {% endcomment %}
+        {% if forloop.counter|divisibleby:3 or forloop.last %}    
+                </div>
+        {% endif %}
     {% endfor %}
-{% comment %} termina contenido {% endcomment %}
+    {% comment %} termina contenido {% endcomment %}
+
 {% endblock %}
+
+{% comment %} 
+ `forloop.counter0` y `divisibleby` son características de las plantillas de Django
+    
+
+1. **forloop.counter0**: En las plantillas de Django, cuando estás dentro de un bucle `{% for %}`, puedes usar `forloop.counter0` para obtener el índice actual del bucle, comenzando desde 0¹³. Por ejemplo, si estás iterando sobre una lista de 5 elementos, `forloop.counter0` será 0 en la primera iteración, 1 en la segunda, y así sucesivamente hasta 4 en la última iteración¹³.
+
+2. **divisibleby**: `divisibleby` es un filtro de plantilla de Django que devuelve `True` si el valor es divisible por el argumento, y `False` en caso contrario⁶⁷. Por ejemplo, si tienes un número y quieres verificar si es divisible por 3, podrías usar `{% if value|divisibleby:3 %}` en tu plantilla⁶⁷.
+
+3.forloop.last: Es otra variable que Django proporciona automáticamente dentro de un bucle for, que es True si la iteración actual es la última del bucle, y False en caso contrario. {% endcomment %}
