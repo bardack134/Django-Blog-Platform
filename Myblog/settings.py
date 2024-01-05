@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Myblog.wsgi.application'
 # }
 # configuracion de la base de datos en una aplicación Django tomando la URL de la base de datos desde una variable de entorno llamada "DATABASE_URL" y utilizando el paquete dj_database_url para convertir esa URL en la configuración de la base de datos que Django puede comprender y utilizar. 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))   
+'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
