@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class post(models.Model):
+class Post(models.Model):
     #La línea unique=True se aplica al campo title. Esto significa que cada valor en el campo title debe ser único en toda la tabla de la base de datos. No puede haber dos filas con el mismo valor en el campo title.
     titulo = models.CharField(max_length=200, blank=True, null=True, unique=True) 
     

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 
-from .models import post
+from .models import Post
 # Create your views here.
 
 def home(request):
-    datos = post.objects.all()
+    datos = Post.objects.all()
     
     context = {
         'datos': datos
@@ -15,7 +15,7 @@ def home(request):
 
 def blog(request, blog_id):
     # Con el id usando el metodo  get(. recordando que el metodo get() en un modelo de Django se utiliza para recuperar un único objeto que cumple con los criterios de búsqueda especificados. 
-    dato=post.objects.get(id=blog_id)
+    dato=Post.objects.get(id=blog_id)
        
     
     context = {
