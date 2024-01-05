@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 # Importa la configuración global del proyecto Django desde settings.py.
 from django.conf import settings
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 # Lista de patrones de URL para el enrutamiento de la aplicación.
 urlpatterns = [
     # Ruta para acceder al panel de administración de Django.
@@ -33,8 +35,8 @@ urlpatterns = [
     path('', include('main.urls'))
 ]
 
-
-# Configuración para servir archivos estáticos y multimedia durante el desarrollo
-if settings.DEBUG:
-    # Agrega las URL para servir archivos multimedia (MEDIA_URL) usando la ruta del sistema de archivos especificada en MEDIA_ROOT
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+# # Configuración para servir archivos estáticos y multimedia durante el desarrollo
+# if settings.DEBUG:
+#     # Agrega las URL para servir archivos multimedia (MEDIA_URL) usando la ruta del sistema de archivos especificada en MEDIA_ROOT
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
