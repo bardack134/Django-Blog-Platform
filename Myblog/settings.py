@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,14 +122,17 @@ USE_TZ = True
 
 # Define la URL base para acceder a los archivos estáticos
 STATIC_URL = '/static/'
+
 # Define el directorio donde se copiarán los archivos estáticos al ejecutar el comando collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Define los directorios adicionales donde buscar archivos estáticos
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  
 ]
+
 # Define la clase que se encarga de almacenar y servir los archivos estáticos. Whitenoise es una librería que permite servir los archivos estáticos de forma eficiente y segura.
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 
