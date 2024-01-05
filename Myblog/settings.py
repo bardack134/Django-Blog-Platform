@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['django-blog-platform.onrender.com', 'localhost']
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
