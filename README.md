@@ -24,7 +24,7 @@ To run this project on your local environment, follow these steps:
 - **HTML and CSS**: For the structure and styling of web pages.
 - **Python**: Programming language used for server-side logic.
 - **SQLite**: Default database engine used by Django for data storage.
-- 
+  
 
 ### Results and Achievements
 - Implementation of a functional blog system with Django.
