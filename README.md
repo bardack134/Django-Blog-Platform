@@ -31,7 +31,7 @@ To run this project on your local environment, follow these steps:
 - Training in the use of Django for web application development.
 - Understanding of basic concepts such as routing, views, and templates in Django.
 - Acquisition of skills in handling models and database queries with Django.
--
-- ![img](https://github.com/bardack134/Django-Blog-Platform/assets/142977989/a475e47c-d1d4-4ab3-aa47-68aa8baabd18)
-- 
+
+ ![img](https://github.com/bardack134/Django-Blog-Platform/assets/142977989/a475e47c-d1d4-4ab3-aa47-68aa8baabd18)
+
 ![img 2](https://github.com/bardack134/Django-Blog-Platform/assets/142977989/e5a67ba1-5731-4442-af1b-29ef9204dc0b)
