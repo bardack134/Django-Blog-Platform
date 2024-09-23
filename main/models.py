@@ -15,7 +15,7 @@ class Post(models.Model):
 
     texto= models.TextField(blank=True, null=True)
     
-    imagen= models.ImageField(upload_to="blog", blank=True, null=True)
+    imagen = models.URLField(blank=True, null=True)
     # Este campo se utilizará para almacenar fechas y horas. 'auto_now_add=True' establece la fecha automáticamente al agregar un nuevo registro.
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
