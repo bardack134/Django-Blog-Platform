@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =os.environ.get('SECRET_KEY')
-
+# SECRET_KEY =os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-bv$&+40^hws=)h*ep^ez3dz*k%25s(@on07ry2_2w^v^)pn8uw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower()=="true"
@@ -85,21 +85,33 @@ WSGI_APPLICATION = 'Myblog.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# configuracion de la base de datos en una aplicación Django tomando la URL de la base de datos desde una variable de entorno llamada "DATABASE_URL" y utilizando el paquete dj_database_url para convertir esa URL en la configuración de la base de datos que Django puede comprender y utilizar. 
-if not DEBUG:
+# os.environ.geturacion de la base de datos en una aplicación Django tomando la URL de la base de datos desde una variable de entorno llamada "DATABASE_URL" y utilizando el paquete dj_database_url para convertir esa URL en la os.environ.geturación de la base de datos que Django puede comprender y utilizar. 
+# if not DEBUG:
     
-    DATABASES = {
-	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+#     DATABASES = {
+# 	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
     
-else:
+# else:
 
-    DATABASES = {
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_ADDON_DB'),
+        'USER': os.environ.get('MYSQL_ADDON_USER'),
+        'PASSWORD': os.environ.get('MYSQL_ADDON_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_ADDON_HOST'),
+        'PORT': os.environ.get('MYSQL_ADDON_PORT'),
     }
 }
+
 
 
 # Password validation
