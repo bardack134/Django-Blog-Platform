@@ -4,17 +4,20 @@ set -o errexit
 
 pip install -r requirements.txt
 
+# Recolecta archivos estáticos
 python manage.py collectstatic --no-input
-python manage.py migrate
-python manage.py makemigrations
 
-# Crea el superusuario
+# Crea las migraciones primero y luego aplica las migraciones
+python manage.py makemigrations
+python manage.py migrate --no-input
+
+# Crea el superusuario si no existe
 python -c "
 import os
 import django
 from django.contrib.auth import get_user_model
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Myblog.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Myblog.settings')  # Ajusta según el nombre de tu proyecto
 django.setup()
 
 User = get_user_model()
