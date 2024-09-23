@@ -25,17 +25,18 @@
             {% endif %}
                 <!-- fila 1 -->
                 <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
-                <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
-                    <div class="card text-center" style="width: 18rem;">
+                <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center">
+                    <div class="card d-flex flex-column text-center" style="width: 18rem;">
                         <img src="{{ i.imagen }}" class="card-img-top" alt="...">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ i.titulo }}</h5>
                             <p class="card-text">{{ i.description }}</p>
-                            {% comment %} EETIQUETA DE ANCLAJE QUE CREARÁ UN ENLACE A 'MAIN:BLOG' ENVIANDO COMO PARAMETRO 'I.ID' , MAIN ES EL NOMBRE DE APP_NAME EN EL ARCHIVO URLS, Y BLOG EL NOMBRE DE LA URL, EL ID LO OBTENEMOS DEL CICLO FOR   {% endcomment %}
-                            <a href="{% url 'Main:Blog' i.id %}" class="btn btn-primary">View Blog Details</a>
+                            <!-- Aquí el mt-auto asegura que el botón quede al final de la tarjeta -->
+                            <a href="{% url 'Main:Blog' i.id %}" class="btn btn-primary mt-auto">View Blog Details</a>
                         </div>
                     </div>
                 </div>
+                
             
             {% comment %} lo que hace este código es cerrar un bloque <div> cada vez que forloop.counter es divisible por 3, o si es la última iteración del bucle {% endcomment %}
         {% if forloop.counter|divisibleby:3 or forloop.last %}    
